@@ -1,10 +1,12 @@
 import '../../node_modules/uikit/dist/css/uikit.min.css'
+
+
 const UserTable = (props) =>{
-    const userList = props.users;
-    const deleteUser = props.deleteUser
-    const editUser = props.editUser
+    const userList = props.users; //data users didalam state users
+    const deleteUser = props.deleteUser //fungsi deleteUser()
+    const editUser = props.editUser //fungsi editUser()
     return(
-        // <div className="table-responsive">
+        <div className="uk-overflow-auto">
             <table className="uk-table uk-table-divider">
                     <thead>
                         <tr>
@@ -22,16 +24,17 @@ const UserTable = (props) =>{
                                     <td>{user.name}</td>
                                     <td>{user.username}</td>
                                     <td className="text-center">
-                                        <button type="submit" onClick={()=>deleteUser(user.id)}  className="uk-button uk-button-danger mx-1">Delete</button>
-                                        <button type="submit" onClick={()=>editUser(user.id,user)}  className="uk-button uk-button-primary mx-1">Edit</button>
+                                        <button type="submit" onClick={()=>deleteUser(user.id)} className="uk-button uk-button-danger uk-button-small mx-1">Delete</button>
+                                        {/*ambil id*/}
+                                        <button type="submit" onClick={()=>editUser(user.id,user)} className="uk-button uk-button-primary uk-button-small mx-1">Edit</button>
+                                        {/*ambil id dan objek usernya*/}
                                     </td>
                                 </tr>
                             ))
                         }
                     </tbody>
             </table>
-            
-        // </div>
+        </div>
     )
 }
 

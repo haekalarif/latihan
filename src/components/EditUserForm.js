@@ -3,17 +3,19 @@ import '../../node_modules/uikit/dist/css/uikit.min.css'
 
 const EditUserForm = (props) => {
 
+    let userData = props.currentUser;//data objek user
+    const [user, setUser] = useState(userData);
+    
+    // console.log(user)
 
-    const [user, setUser] = useState(props.currentUser);
-
-    const handleChange = (e)=>{
-        const {name,value} = e.target
-        setUser({...user,[name]:value})
+    const handleChange = (e)=>{ //ketika ada event perubahan saat input data
+        const {name,value} = e.target; //{e.target.name,e.target.value}
+        setUser({...user,[name]:value});//setUser = {[e.target.name]:e.target.value}
     }
-    const handleSubmit = (e) =>{
-        e.preventDefault()
-        if (user.name && user.username)props.updateUser(user)
-        props.setEditing(false)
+    const handleSubmit = (e) =>{//ketika ada event meng update dat
+        e.preventDefault();//agar tidak reload
+        if (user.name && user.username)props.updateUser(user);// jika name dan username ada didalam state user maka jalankan fungsi updateUser dengan parameter objek user yang sudah dirubah
+        props.setEditing(false);//ubah nilai editing menjadi false
 
     }
 

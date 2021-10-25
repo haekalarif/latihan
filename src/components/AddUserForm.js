@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-// import { TextField } from '@fluentui/react/lib/TextField';
-// import { PrimaryButton } from '@fluentui/react';
 import '../../node_modules/uikit/dist/css/uikit.min.css'
+import '../../node_modules/uikit/dist/js/uikit-icons.min.js'
 
 const AddUserForm = (props) => {
 
@@ -9,15 +8,16 @@ const AddUserForm = (props) => {
 
     const [user, setUser] = useState(initUser);
 
-    const handleChange = (e)=>{
-        const {name,value} = e.target
-        setUser({...user,[name]:value})
+    const handleChange = (e)=>{//ketika ada event perubahan saat input data
+        const {name,value} = e.target;// {e.target.name,e.target.value}
+        setUser({...user,[name]:value});//setUser = {[e.target.name]:e.target.value}
     }
-    const handleSubmit = (e) =>{
-        e.preventDefault()
-        if (user.name && user.username) {
-            handleChange(e, props.addUser(user));
+    const handleSubmit = (e) =>{//ketika ada event men submit data
+        e.preventDefault()//agar tidak me reload page
+        if (user.name && user.username) {//jika name dan username ada di state user
+            handleChange(e, props.addUser(user));//jalankan fungsi addUser(user). note "user adalah objek"
         }
+        setUser({...user,name:'',username:''})//mengosongkan state user
     }
 
     return (
@@ -29,7 +29,9 @@ const AddUserForm = (props) => {
                 <div className="mb-2">
                     <input className="uk-input mb-3" type="text" name="username" value={user.username} onChange={handleChange} placeholder="Username"/>
                 </div>
-                <button type="submit" className="uk-button uk-button-primary">Submit</button>
+                <div className="text-end">
+                    <button type="submit" className="uk-button uk-button-primary">Submit</button>
+                </div>
             </form>
         </div>
     )
