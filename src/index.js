@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import bootstrap from 'bootstrap';
+import '../node_modules/bootstrap/dist/css/bootstrap.css'
+import '../node_modules/bootstrap-icons/font/bootstrap-icons.css'
 
 ReactDOM.render(
   <React.StrictMode>
